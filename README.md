@@ -1,2 +1,2 @@
 # sica01
-System Integration compulsary assignment 1
+System Integration compulsory assignment 1
