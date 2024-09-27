@@ -1,0 +1,7 @@
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: UserApi/Dockerfile
+    ports:
+      - "5099:5098"
