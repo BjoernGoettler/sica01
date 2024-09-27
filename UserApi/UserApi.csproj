@@ -24,4 +24,8 @@
       <Folder Include="Controllers\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
+    </ItemGroup>
+
 </Project>
