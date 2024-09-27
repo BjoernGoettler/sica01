@@ -4,4 +4,18 @@ services:
       context: .
       dockerfile: UserApi/Dockerfile
     ports:
-      - "5099:5098"
+      - 8080:8080
+      - 5098:5098
+    depends_on:
+      - seq
+  seq:
+    image: datalust/seq
+    ports:
+    - 5341:5341
+    - 5342:80
+    volumes:
+      - rps_seq_data:/data
+    environment:
+      - ACCEPT_EULA=Y
+volumes:
+  rps_seq_data:
