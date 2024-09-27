@@ -1,9 +1,9 @@
-using System.Collections.Immutable;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using TweetService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddControllers();
 builder.Services.AddDbContext<TweetContext>(
     opt => opt.UseInMemoryDatabase("Tweets"));
 
@@ -23,3 +23,4 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 app.UseHttpsRedirection();
 app.Run();
+Log.CloseAndFlush();
