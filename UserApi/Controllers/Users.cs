@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Monitoring;
 using UserApi.Models;
 
 namespace UserApi.Controllers
@@ -24,6 +20,7 @@ namespace UserApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
+            MonitorService.Log.Here().Debug("Get Users");
             return await _context.User.ToListAsync();
         }
 
@@ -31,6 +28,7 @@ namespace UserApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
+            MonitorService.Log.Here().Debug("GetUser UserID : " + id.ToString());
             var user = await _context.User.FindAsync(id);
 
             if (user == null)
@@ -46,6 +44,7 @@ namespace UserApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
+            MonitorService.Log.Here().Debug("PutUser : " + user.ToString());
             if (id != user.UserId)
             {
                 return BadRequest();
@@ -61,10 +60,12 @@ namespace UserApi.Controllers
             {
                 if (!UserExists(id))
                 {
+                    MonitorService.Log.Here().Information("User not found : " + id.ToString());
                     return NotFound();
                 }
                 else
                 {
+                    MonitorService.Log.Here().Error("PutUser died!!! : " + id.ToString());
                     throw;
                 }
             }
@@ -77,6 +78,7 @@ namespace UserApi.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            MonitorService.Log.Here().Debug("PostUser : " + user.ToString());
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 
@@ -87,6 +89,7 @@ namespace UserApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
+            MonitorService.Log.Here().Debug("DeleteUser : " + id.ToString());
             var user = await _context.User.FindAsync(id);
             if (user == null)
             {

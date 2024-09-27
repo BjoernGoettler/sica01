@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using UserApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,3 +24,4 @@ app.MapControllers();
 app.UseHttpsRedirection();
 
 app.Run();
+Log.CloseAndFlush();
