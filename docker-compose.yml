@@ -7,6 +7,8 @@ services:
       - 8080:8080
     depends_on:
       - seq
+    networks:
+      - microservices_net
   tweets:
     build:
       context: .
@@ -16,6 +18,8 @@ services:
     depends_on:
       - seq
       - users
+    networks:
+      - microservices_net
   seq:
     image: datalust/seq
     ports:
@@ -25,5 +29,16 @@ services:
       - rps_seq_data:/data
     environment:
       - ACCEPT_EULA=Y
+    networks:
+      - microservices_net
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 15672:15672
+      - 15672:15672
+    networks:
+      - microservices_net
 volumes:
   rps_seq_data:
+networks:
+  microservices_net:
