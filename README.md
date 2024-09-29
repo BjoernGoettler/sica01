@@ -12,7 +12,7 @@ There are a couple of configuration files for [Bruno](bruno_collection.json) and
 - A [TweetService](TweetService) implemented as an API with basic CRUD controls for "Tweets"
 
 ## Additional functionality description
-- A [MessageClient](MessageClient), heavily inspired from the E-Commerce example. To provide an easy to setup client for messaging between the 2 main services
+- A [MessageClient](MessageCLient), heavily inspired from the E-Commerce example. To provide an easy to setup client for messaging between the 2 main services
 - A [MonitorService](Monitoring). Not so much a service, as it is a class library to give us some functionality to communicate with the logging service
 
 ## Functionality
