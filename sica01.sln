@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoring", "Monitoring\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetService", "TweetService\TweetService.csproj", "{87D9D4AB-B148-4FC6-9C5A-1B3DDAE7DDC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{DE16DDA5-A892-40EC-A0AA-88F261707209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,5 +27,9 @@ Global
 		{87D9D4AB-B148-4FC6-9C5A-1B3DDAE7DDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87D9D4AB-B148-4FC6-9C5A-1B3DDAE7DDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87D9D4AB-B148-4FC6-9C5A-1B3DDAE7DDC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE16DDA5-A892-40EC-A0AA-88F261707209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE16DDA5-A892-40EC-A0AA-88F261707209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE16DDA5-A892-40EC-A0AA-88F261707209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE16DDA5-A892-40EC-A0AA-88F261707209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
