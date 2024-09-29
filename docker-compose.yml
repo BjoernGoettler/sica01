@@ -2,7 +2,7 @@ services:
   users:
     build:
       context: .
-      dockerfile: UserApi/Dockerfile
+      dockerfile: UserService/Dockerfile
     ports:
       - 8080:8080
     depends_on:

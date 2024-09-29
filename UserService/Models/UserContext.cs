@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace UserApi.Models;
+namespace UserService.Models;
 
 public class UserContext : DbContext
 {
