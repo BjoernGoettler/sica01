@@ -5,8 +5,8 @@
 The assignment aims to demonstrate 2 domain specific services, communicating with each other over a RabbitMQ messaging system
 
 ## Service description:
-- A [UserService]("/UserService") implemented as an API with basic CRUD controls for users
-- A [TweetService]("/TweetService") implemented as an API with basic CRUD controls for "Tweets"
+- A [/UserService]("UserService/") implemented as an API with basic CRUD controls for users
+- A [/TweetService]("TweetService/") implemented as an API with basic CRUD controls for "Tweets"
 
 ## Additional functionality description
 - A [MessageClient], heavily inspired from the E-Commerce example. To provide an easy to setup client for messaging between the 2 main services
