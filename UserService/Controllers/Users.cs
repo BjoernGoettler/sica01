@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Monitoring;
-using UserApi.Models;
+using UserService.Models;
 
-namespace UserApi.Controllers
+namespace UserService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

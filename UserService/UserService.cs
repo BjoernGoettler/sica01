@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using UserApi.Models;
+using UserService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
