@@ -1,6 +1,6 @@
-using EasyNetQ;
+﻿using EasyNetQ;
 
-namespace UserService;
+namespace TweetService;
 
 public class MessageClient
 {

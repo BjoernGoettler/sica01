@@ -1,8 +1,13 @@
+using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using UserService;
 using UserService.Models;
+using static UserService.MessageClient;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHostedService<MessageHandler>();
+builder.Services.AddSingleton(new MessageClient(RabbitHutch.CreateBus(connectionString:"host=rabbitmq;port=5672;virtualHost=/;username=guest;password=guest")));
 builder.Services.AddControllers();
 builder.Services.AddDbContext<UserContext>(opt=>opt.UseInMemoryDatabase("Users"));
 

@@ -1,8 +1,13 @@
+using EasyNetQ;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using TweetService.Models;
+using static TweetService.MessageClient;
+using TweetService;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHostedService<MessageHandler>();
+builder.Services.AddSingleton(new MessageClient(RabbitHutch.CreateBus(connectionString:"host=rabbitmq;port=5672;virtualHost=/;username=guest;password=guest")));
 builder.Services.AddControllers();
 builder.Services.AddDbContext<TweetContext>(
     opt => opt.UseInMemoryDatabase("Tweets"));
@@ -21,6 +26,5 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.MapControllers();
-app.UseHttpsRedirection();
 app.Run();
 Log.CloseAndFlush();
