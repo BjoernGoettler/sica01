@@ -1,15 +1,18 @@
 services:
-  users:
+  userservice:
     build:
       context: .
       dockerfile: UserService/Dockerfile
+    environment:
+      - EASYNETQ_CONNECTION_STRING=host=rabbitmq;port=5672;virtualHost=/;username=guest;password=guest
     ports:
       - 8080:8080
     depends_on:
-      - seq
+      rabbitmq:
+        condition: service_healthy
     networks:
       - microservices_net
-  tweets:
+  tweetservice:
     build:
       context: .
       dockerfile: TweetService/Dockerfile
@@ -18,8 +21,8 @@ services:
     ports:
       - 8081:8080
     depends_on:
-      - seq
-      - users
+      rabbitmq:
+        condition: service_healthy
     networks:
       - microservices_net
   seq:
@@ -37,9 +40,13 @@ services:
     image: rabbitmq:3-management-alpine
     ports:
       - 15672:15672
-      - 15672:15672
     networks:
       - microservices_net
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 1s
+      timeout: 3s
+      retries: 30
 volumes:
   rps_seq_data:
 networks:
