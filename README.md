@@ -20,12 +20,11 @@ The 2 services are not aware of each other, and work very well within their isol
 For every event in both services, a debug messages is logged (Using Serilog with Console and Seq sinks), and can be queried in the Seq instance launched in Docker
 
 ## Scaling considerations
-The solution is split on the y-axis to begin with. Each of the two domains, Users and Tweets, live in their own logical universe and are happily unaware of their neighbours. In real life it would be very easy to split them on the x-axis as well, the only reason for not showing it here, is that I got some clashes on the ports I use for testing with Postman. I guess it could be mitigated by adding a web-proxy to the project, such as Nginx or similar
+The solution is split on the y-axis to begin with. Each of the two domains, Users and Tweets, live in their own logical universe and are happily unaware of their neighbours. 
 
 ## Missed opportunities
 At the time of writing, a few things are not implemented
 
-- The user validation is not happening at all. Seq shows an attempt, RabbitMQ shows a connection, but I guess it is a misunderstanding when implementing the MessageClient
+- The user validation is not happening at all
 - The Tweet model is too simple. If inspected carefully, it is clear that one user can only have 1 tweet. There would have to be a new Tweet-ID added, in order to let users tweet more than 1 tweet (personally I actually enjoy thr thought of giving a person 1 tweet in life, and that's it!!!)
-- The users are only validated, and nothing more. It would be cool to update the name they used for tweeting, when they updated their name in the UserService
 - There is no error handling. Be carefull when testing, because both services will crash hard when doing something I didn't image someone would do to a service
