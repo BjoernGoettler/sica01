@@ -27,6 +27,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
+      <ProjectReference Include="..\SharedMessages\SharedMessages.csproj" />
     </ItemGroup>
 
 </Project>
