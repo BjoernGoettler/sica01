@@ -1,10 +1,7 @@
-using MessageClient;
 using Monitoring;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TweetService.Models;
-using Messages;
-using MessageClient.Factory;
 
 namespace TweetService.Controllers
 {
@@ -12,15 +9,14 @@ namespace TweetService.Controllers
     [ApiController]
     public class Tweets : ControllerBase
     {
-        private static readonly EasyNetQFactory EasyNetQFactory = new EasyNetQFactory();
-        //private readonly MessageClient<UserRequest> _messageClient = EasyNetQFactory.CreateTopicMessageClient<UserRequest>("TweetService", "validateUser");
-        private readonly MessageClient<UserRequest> _messageClient = EasyNetQFactory.CreateSendReceiveMessageClient<UserRequest>("Users");
+
+        private readonly MessageClient _messageClient;
         private readonly TweetContext _context;
 
-        public Tweets(TweetContext context)
+        public Tweets(MessageClient messageClient, TweetContext context)
         {
+            _messageClient = messageClient;
             _context = context;
-            _messageClient.Connect();
         }
         
         // GET: api/Tweets
@@ -52,18 +48,10 @@ namespace TweetService.Controllers
         [HttpPost]
         public async Task<ActionResult<Tweet>> PostTweet(Tweet tweet)
         {
-            var userRequest = new UserRequest
-            {
-                UserId = tweet.TweetId
-            };
-            
-            MonitorService.Log.Here().Debug("Attempting to validate user through RabbitMQ");
-            _messageClient.Send(userRequest);
-            
             MonitorService.Log.Here().Debug("PostTweet: " + tweet.TweetId.ToString());
             _context.Tweet.Add(tweet);
             await _context.SaveChangesAsync();
-            MonitorService.Log.Here().Information("\ud83d\ude02 we made a tweet : " + tweet.TweetText);
+            MonitorService.Log.Here().Information("we made a tweet : " + tweet.TweetText);
             return CreatedAtAction("GetTweet", new { id = tweet.TweetId }, tweet);
         }
 

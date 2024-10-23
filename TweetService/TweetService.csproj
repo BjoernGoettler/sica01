@@ -29,9 +29,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Messages\Messages.csproj" />
       <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
-      <ProjectReference Include="..\MessageCLient\MessageClient.csproj" />
+      <ProjectReference Include="..\SharedMessages\SharedMessages.csproj" />
     </ItemGroup>
 
     <ItemGroup>

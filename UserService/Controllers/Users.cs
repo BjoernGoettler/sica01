@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Monitoring;
+using SharedMessages;
 using UserService.Models;
 
 namespace UserService.Controllers
@@ -10,9 +12,11 @@ namespace UserService.Controllers
     public class Users : ControllerBase
     {
         private readonly UserContext _context;
+        private readonly MessageClient _messageClient;
 
-        public Users(UserContext context)
+        public Users(MessageClient messageClient, UserContext context)
         {
+            _messageClient = messageClient;
             _context = context;
         }
 
@@ -83,6 +87,20 @@ namespace UserService.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetUser), new { id = user.UserId }, user);
+        }
+
+        [HttpPost]
+        public OkResult UserTweets(string tweet)
+        {
+            var _tweet = new Tweet
+            {
+                TweetText = tweet
+            };
+            
+            _messageClient.Send(_tweet, "tweet");
+
+            return Ok();
+
         }
 
         // DELETE: api/Users/5
