@@ -44,4 +44,5 @@ BiRel_D(user, userservice, "Interacts", "HTTP")
 Rel_D(userservice, userdb, "Handles user data", "EntityFramework")
 BiRel_R(userservice, messagequeue, "Communicates", "AMQP")
 BiRel_R(messagequeue, tweetservice, "Communicates", "AMQP")
+Rel_R(tweetservice, tweetdb, "Handles Tweets", "EntityFramework")
 @enduml
