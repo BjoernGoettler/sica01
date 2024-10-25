@@ -11,7 +11,12 @@ public class MessageClient
         _bus = bus;
     }
 
-    public void Send<T>(T message, string topic)
+    public MessageClient()
+    {
+        _bus = RabbitHutch.CreateBus("host=localhost");
+    }
+
+    public virtual void Send<T>(T message, string topic)
     {
         _bus.PubSub.PublishAsync(message, topic);
     }

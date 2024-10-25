@@ -1,0 +1,16 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=23732fae_002D6114_002D48b4_002D95c8_002Dd9aaa7117b1f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestTweetServicePost" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::FA007E04-F3C9-49F7-BA32-5EAEE8CFB1CD::net8.0::TweetService.Test.TestTweetServicePost&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=72963de5_002D9d4e_002D48b2_002Db8c9_002De10771f6a5d3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestTweetServicePost #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::FA007E04-F3C9-49F7-BA32-5EAEE8CFB1CD::net8.0::TweetService.Test.TestTweetServicePost&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d7014c7c_002Da9ff_002D4873_002Dad87_002Da553af217bdd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="PostShouldCallAdd" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::FA007E04-F3C9-49F7-BA32-5EAEE8CFB1CD::net8.0::TweetService.Test.TestTweetServicePost&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
