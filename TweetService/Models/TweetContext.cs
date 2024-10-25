@@ -7,5 +7,8 @@ public class TweetContext: DbContext
         : base(options)
     {}
     
+    public TweetContext()
+    {}
+    
     public DbSet<Tweet> Tweet { get; set; }
 }
