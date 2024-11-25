@@ -1,0 +1,16 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/TweetService",
+      "UpstreamHttpMethod": ["POST"],
+      "DownstreamPathTemplate": "/TweetService",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tweetservice",
+          "Port": 80
+        }
+      ]
+    }
+  ]
+}
