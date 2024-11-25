@@ -1,11 +1,13 @@
 services:
   gatewayservice:
+    image: larsvegascph/gatewayservice
     build:
       context: .
       dockerfile: Gateway/Dockerfile
     ports:
       - 8080:8080
   userservice:
+    image: larsvegascph/userservice
     build:
       context: .
       dockerfile: UserService/Dockerfile
@@ -17,6 +19,7 @@ services:
     networks:
       - microservices_net
   tweetservice:
+    image: larsvegascph/tweetservice
     build:
       context: .
       dockerfile: TweetService/Dockerfile
