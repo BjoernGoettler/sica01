@@ -36,7 +36,7 @@ public class TestTweetServicePost
         mockContext.Setup(
                 m=> m.Add(dbtweet));
         
-        var controller = new Tweets(mockMessageClient.Object, mockContext.Object);
+        var controller = new TweetController(mockMessageClient.Object, mockContext.Object);
         //Act
         
         var result = controller.PostTweet(dbtweet);

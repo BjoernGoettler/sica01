@@ -4,6 +4,8 @@ using Serilog;
 using TweetService.Models;
 using static TweetService.MessageClient;
 using TweetService;
+using TweetService.Interfaces;
+using TweetService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHostedService<MessageHandler>();
@@ -11,6 +13,8 @@ builder.Services.AddSingleton(new MessageClient(RabbitHutch.CreateBus(connection
 builder.Services.AddControllers();
 builder.Services.AddDbContext<TweetContext>(
     opt => opt.UseInMemoryDatabase("Tweets"));
+
+builder.Services.AddScoped<ITweetRepository, TweetRepository>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
