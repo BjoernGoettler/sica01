@@ -19,7 +19,5 @@ public class TweetRepository(TweetContext tweetContext): ITweetRepository
         => await tweetContext.Tweet.ToListAsync();
     
     internal async Task<bool> TweetExists(int id)
-    {
-        return await tweetContext.Tweet.AnyAsync(e => e.TweetId == id);
-    }
+        => await tweetContext.Tweet.AnyAsync(e => e.TweetId == id);
 }
