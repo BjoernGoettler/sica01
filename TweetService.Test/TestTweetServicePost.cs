@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.SignalR.Protocol;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using TweetService.Controllers;
+using TweetService.DTO;
 using TweetService.Models;
+using TweetService.Repositories;
 using Tweet = SharedMessages.Tweet;
 using DBTweet = TweetService.Models.Tweet;
 
@@ -28,21 +30,25 @@ public class TestTweetServicePost
         
         mockMessageClient.Setup(
             client => client.Send(
-                new Tweet
+                new TweetIn
                 {
                     TweetText = "Test time!!!"
                 }, "tweet"));
         
         mockContext.Setup(
                 m=> m.Add(dbtweet));
+
+        var tweetIn = new TweetIn
+        {
+            TweetText = "Svendbent er awesome!"
+        };
         
-        var controller = new TweetController(mockMessageClient.Object, mockContext.Object);
+        var repository = new TweetRepository(mockContext.Object);
         //Act
         
-        var result = controller.PostTweet(dbtweet);
+        var result = repository.PostTweet(tweetIn);
         //Assert
         Assert.True(true);
-        
         //mockContext.Verify(db=> db.Add(dbtweet), Times.AtLeastOnce);
     }
 }
