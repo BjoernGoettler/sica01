@@ -22,8 +22,7 @@ public class TestTweetServicePost
         
         var dbtweet = new DBTweet
         {
-            TweetText = "Yay",
-            TweetId = 2000
+            TweetText = "Yay"
         };
 
         mockContext.Setup(x => x.Set<DBTweet>()).Returns(mockSet.Object);
@@ -49,6 +48,6 @@ public class TestTweetServicePost
         var result = repository.PostTweet(tweetIn);
         //Assert
         Assert.True(true);
-        //mockContext.Verify(db=> db.Add(dbtweet), Times.AtLeastOnce);
+        mockContext.Verify(db=> db.Add(dbtweet), Times.AtLeastOnce);
     }
 }
