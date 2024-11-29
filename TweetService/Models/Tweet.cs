@@ -2,6 +2,6 @@ namespace TweetService.Models;
 
 public class Tweet
 {
-    public int TweetId { get; set; }
+    public string TweetId { get; set; } = new Guid().ToString();
     public string TweetText { get; set; }   
 }
