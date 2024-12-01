@@ -6,6 +6,9 @@ services:
       dockerfile: Gateway/Dockerfile
     ports:
       - 8080:8080
+    networks:
+      - microservices_net
+      - default
   userservice:
     image: larsvegascph/userservice
     build:
@@ -56,3 +59,4 @@ volumes:
   rps_seq_data:
 networks:
   microservices_net:
+    internal: true
