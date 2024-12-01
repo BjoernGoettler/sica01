@@ -2,12 +2,28 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/TweetService",
-      "UpstreamHttpMethod": ["POST"],
+      "UpstreamHttpMethod": ["Post"],
       "DownstreamPathTemplate": "/TweetService",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "tweetservice",
+          "Port": 80
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": ["tweet.read", "tweet.write"]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/auth",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamPathTemplate": "/authservice",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
           "Port": 80
         }
       ]

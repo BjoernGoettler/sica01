@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetService.Test", "TweetS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{4D378046-C640-4B5A-91B1-8EE4FF35426B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\AuthService.csproj", "{9F503FF4-DEC2-4511-86B0-2DD22D60C4B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +45,9 @@ Global
 		{4D378046-C640-4B5A-91B1-8EE4FF35426B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D378046-C640-4B5A-91B1-8EE4FF35426B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D378046-C640-4B5A-91B1-8EE4FF35426B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F503FF4-DEC2-4511-86B0-2DD22D60C4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F503FF4-DEC2-4511-86B0-2DD22D60C4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F503FF4-DEC2-4511-86B0-2DD22D60C4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F503FF4-DEC2-4511-86B0-2DD22D60C4B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
