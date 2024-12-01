@@ -27,6 +27,18 @@
           "Port": 80
         }
       ]
+    },
+    {
+      "UpstreamPathTemplate": "tweets/faucet",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamPathTemplate": "tweets/faucet",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tweetservice",
+          "Port": 80
+        }
+      ]
     }
   ]
 }

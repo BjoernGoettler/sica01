@@ -28,6 +28,7 @@ services:
       dockerfile: TweetService/Dockerfile
     environment:
       - EASYNETQ_CONNECTION_STRING=host=rabbitmq;port=5672;virtualHost=/;username=guest;password=guest
+      - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
       - gatewayservice
       - rabbitmq

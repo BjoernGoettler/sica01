@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="EasyNetQ" Version="7.8.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-rc.1.24451.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0-rc.1.24451.1" />
@@ -32,10 +33,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
       <ProjectReference Include="..\SharedMessages\SharedMessages.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers\" />
     </ItemGroup>
 
 </Project>
