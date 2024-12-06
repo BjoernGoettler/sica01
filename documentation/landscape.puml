@@ -26,6 +26,10 @@ title Solution Overview
 
 Person(user, "Tweeter")
 
+Container_Boundary(apigateway, "API Gateway"){
+    Container(gatewaycontainer,"API Gateway", "Ocelot", "Orchestrates users interaction with API's")
+}
+
 Container_Boundary(usercontainer, "User Container"){
     Container(userservice, "User Service", "C#/api", "Serves users needs", $sprite=dotnet)
     ContainerDb(userdb, "User database", "MySQL", "Persists user data", $sprite=mysql)
@@ -40,7 +44,9 @@ ContainerQueue(messagequeue, "Message Queue", "RabbitMQ", "Communicates between 
 
 
 
-BiRel_D(user, userservice, "Interacts", "HTTP")
+BiRel_D(user, apigateway, "Interacts", "HTTP")
+BiRel_D(apigateway, userservice, "Queryes", "HTTP")
+BiRel_D(apigateway, tweetservice, "Queryes", "HTTP")
 Rel_D(userservice, userdb, "Handles user data", "EntityFramework")
 BiRel_R(userservice, messagequeue, "Communicates", "AMQP")
 BiRel_R(messagequeue, tweetservice, "Communicates", "AMQP")
