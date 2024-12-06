@@ -1,28 +1,34 @@
-# System Integration Compulsory Assignment 1
+# System Integration Compulsory Assignment 2
 
-## Helicopter view description:
+## Assigment Overview
 
-The assignment aims to demonstrate 2 domain specific services, communicating with each other over a RabbitMQ messaging system
+This hand-in demonstrates:
 
+
+### [API Gateways](Gateway/ocelot.json)
+Ocelot.json specifies a new endpoint, and hides the two existing ones from the user. It also provides us with some north/south security
+
+### [Reliability](TweetService/Repositories/TweetRepository.cs?plain=1#L17)
+I have used Polly to implement a bit of fallback
+
+### [Kubernetes](tweetservice.k8s.yml)
+I specified the GatewayService, UserService and TweetService in Kubernetes. It works, and every service is up and running:
+![Screenshot of Kubernetes succesfully deployed](documentation/diagrams/k8s.png)
+
+### [Security](AuthService/Services/JwtTokenService.cs)
+I have implemented a JwtTokenService to do all it's magic and help me setup east/west security. The TweetService demands a valid token in order to hand out anything else than an error
+
+### [Microservices Design Patterns](Monitoring/MonitorService.cs)
+The MonitorService has been implemented as a Sidecar
+
+
+## Helicopter overview
 ![Diagram](documentation/diagrams/Solution.png)
 
-## Helpers for reviewing
-There are a couple of configuration files for [Bruno](bruno_collection.json) and [Postman](postman_collection.json)
 
 ## Service description:
 - A [UserService](UserService) implemented as an API with basic CRUD controls for users
 - A [TweetService](TweetService) implemented as an API with basic CRUD controls for "Tweets"
+- A MonitorService that showcases a "Side-Car" Design Pattern
+- An AuthService that helps setting up authentication between services
 
-## Functionality
-The 2 services are not aware of each other, and work very well within their isolated respective code bases. The only obstruction for the Tweeting service to persist a tweet, is that someone wanted to ensure that the user is actually a registered user. Therefore it submits a fire-and-hope request to a RabbitMQ, and waits until it has a confirming response before flushing data to it's database
-For every event in both services, a debug messages is logged (Using Serilog with Console and Seq sinks), and can be queried in the Seq instance launched in Docker
-
-## Scaling considerations
-The solution is split on the y-axis to begin with. Each of the two domains, Users and Tweets, live in their own logical universe and are happily unaware of their neighbours. 
-
-## Missed opportunities
-At the time of writing, a few things are not implemented
-
-- The user validation is not happening at all
-- The Tweet model is too simple. Right now the user has to come up with the ID for a tweet, and it still has to be unique
-- There is no error handling. Be carefull when testing, because both services will crash hard when doing something I didn't image someone would do to a service
